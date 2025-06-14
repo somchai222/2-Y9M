@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>วันครบรอบ 2ปี 9เดือน 💖</title>
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: #fff0f5;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    #slideshow-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #slideshow {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    #caption {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #880e4f;
+    }
+
+    .nav-buttons {
+      margin-top: 20px;
+    }
+
+    .nav-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #f06292;
+      color: white;
+      border-radius: 10px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #ec407a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>สุขสันต์วันครบรอบของเรา 💘</h1>
+
+  <div id="slideshow-container">
+    <img id="slideshow" src="" alt="รูปครบรอบ" onclick="nextSlide()" />
+    <div id="caption">ข้อความความรักจะอยู่ตรงนี้ 💬</div>
+  </div>
+
+  <div class="nav-buttons">
+    <button onclick="prevSlide()">ย้อนกลับ</button>
+    <button onclick="nextSlide()">ถัดไป</button>
+  </div>
+
+  <script>
+    const images = [
+      "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg",
+      "6.jpg",
+      "7.jpg",
+      "8.jpg",
+    ];
+
+    const captions = [
+      "วันที่เค้าเจอเธอเค้าตกหลุมรักเธอ 💑",
+      "วันที่เค้าหาทางออกไม่เจอเธอคือเเสงสว่างในความมืด 😊",
+      "ทุกความทรงจำที่อยู่กับเธอมันมีค่ามาก ✨",
+      "ขอบคุณที่ยังอยู่กับเค้าเเม้ในวันที่เค้าไม่น่ารัก ❤️",
+      "อยากขอโทษมากๆที่ทำให้เธอต้องเสียใจ 🥰",
+      "เค้าขอบคุณมากๆที่เธอเข้ามาในชีวิต🌈",
+      "ขอบคุณที่อยู่ด้วยกันในทุกช่วงเวลา 🤗",
+      "สุขสันวันครบรอบ2ปี9เดือนนะค้าบรักเธอมากๆ 💞"
+    ];
+
+    let index = 0;
+
+    function showSlide(i) {
+      const img = document.getElementById("slideshow");
+      const caption = document.getElementById("caption");
+
+      img.src = images[i];
+      caption.textContent = captions[i];
+    }
+
+    function nextSlide() {
+      index = (index + 1) % images.length;
+      showSlide(index);
+    }
+
+    function prevSlide() {
+      index = (index - 1 + images.length) % images.length;
+      showSlide(index);
+    }
+
+    // เริ่มแสดงภาพแรก
+    showSlide(index);
+
+    // สไลด์อัตโนมัติทุก 4 วินาที
+    setInterval(nextSlide, 15000);
+  </script>
+
+</body>
+</html>
