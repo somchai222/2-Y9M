@@ -56,9 +56,10 @@
       background-color: #ec407a;
     }
 
-    /* ซ่อน player */
-    audio {
-      display: none;
+    #playNotice {
+      font-size: 14px;
+      margin-top: 20px;
+      color: #999;
     }
   </style>
 </head>
@@ -66,8 +67,8 @@
 
   <h1>สุขสันต์วันครบรอบของเรา 💘</h1>
 
-  <!-- แทรกเพลง -->
-  <audio id="bgmusic" autoplay loop>
+  <!-- เพลง -->
+  <audio id="bgmusic" loop>
     <source src="PrettyEyes.mp3" type="audio/mpeg">
     เบราว์เซอร์ของคุณไม่รองรับไฟล์เสียง
   </audio>
@@ -82,16 +83,12 @@
     <button onclick="nextSlide()">ถัดไป</button>
   </div>
 
+  <div id="playNotice">คลิกตรงไหนก็ได้ในหน้านี้เพื่อเปิดเพลง 🎵</div>
+
   <script>
     const images = [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg",
-      "6.jpg",
-      "7.jpg",
-      "8.jpg"
+      "1.jpg", "2.jpg", "3.jpg", "4.jpg",
+      "5.jpg", "6.jpg", "7.jpg", "8.jpg"
     ];
 
     const captions = [
@@ -110,7 +107,6 @@
     function showSlide(i) {
       const img = document.getElementById("slideshow");
       const caption = document.getElementById("caption");
-
       img.src = images[i];
       caption.textContent = captions[i];
     }
@@ -130,6 +126,14 @@
 
     // สไลด์อัตโนมัติทุก 15 วินาที
     setInterval(nextSlide, 15000);
+
+    // ให้ผู้ใช้คลิกเพื่อเริ่มเล่นเพลง (กรณี autoplay ถูกบล็อก)
+    document.addEventListener('click', () => {
+      const music = document.getElementById("bgmusic");
+      music.play().catch((e) => {
+        console.log("Autoplay ถูกบล็อก:", e);
+      });
+    }, { once: true });
   </script>
 
 </body>
