@@ -55,11 +55,22 @@
     .nav-buttons button:hover {
       background-color: #ec407a;
     }
+
+    /* ซ่อน player */
+    audio {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <h1>สุขสันต์วันครบรอบของเรา 💘</h1>
+
+  <!-- แทรกเพลง -->
+  <audio id="bgmusic" autoplay loop>
+    <source src="PrettyEyes.mp3" type="audio/mpeg">
+    เบราว์เซอร์ของคุณไม่รองรับไฟล์เสียง
+  </audio>
 
   <div id="slideshow-container">
     <img id="slideshow" src="" alt="รูปครบรอบ" onclick="nextSlide()" />
@@ -80,7 +91,7 @@
       "5.jpg",
       "6.jpg",
       "7.jpg",
-      "8.jpg",
+      "8.jpg"
     ];
 
     const captions = [
@@ -117,8 +128,8 @@
     // เริ่มแสดงภาพแรก
     showSlide(index);
 
-    // สไลด์อัตโนมัติทุก 4 วินาที
-    setInterval(nextSlide, 10000);
+    // สไลด์อัตโนมัติทุก 15 วินาที
+    setInterval(nextSlide, 15000);
   </script>
 
 </body>
